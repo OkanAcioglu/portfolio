@@ -42,9 +42,9 @@
 /* Small Devices */
 @media screen and (max-width: 600px) {
   .container.testimonials__container {
-    width: var(--container-width-sm);
+    width: var(--container-witdh-sm);
   }
   .client__review {
-    width: var(--container-width-sm);
+    width: var(--container-witdh-sm);
   }
 }

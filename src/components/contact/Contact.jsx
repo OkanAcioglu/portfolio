@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './contact.css'
 import { MdOutlineEmail } from 'react-icons/md'
 import { RiMessengerLine } from 'react-icons/ri'
 import { BsWhatsapp } from 'react-icons/bs'
+import emailjs from 'emailjs-com'
+
 const Contact = () => {
+  const form = useRef()
+
+  const sendEmail = (e) => {
+    e.preventDefault()
+
+    emailjs.sendForm(
+      'service_w9fe9sj',
+      'template_3xngcz8',
+      form.current,
+      'HFqPJYOXLlHddNo7B'
+    )
+    e.target.reset()
+  }
   return (
     <section id='contact'>
       <h5>Get In Touch</h5>
@@ -26,17 +41,13 @@ const Contact = () => {
             <BsWhatsapp className='contact__option-icon' />
             <h4>WhatsApp</h4>
             <h5>Okan Acıoğlu</h5>
-            <a
-              // href='https://api.whatsapp.com/send?phone=+9005357198350'
-              href='https://wa.me/+9005357198350'
-              target='_blank'
-            >
+            <a href='https://wa.me/+9005357198350' target='_blank'>
               Send a Message
             </a>
           </article>
         </div>
         {/* End Of Contact Option */}
-        <form action=''>
+        <form ref={form} onSubmit={sendEmail}>
           <input
             type='text'
             name='name'
